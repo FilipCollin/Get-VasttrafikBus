@@ -133,7 +133,7 @@ function Get-VasttrafikBus {
 
                 Depature            = $_.origin.time
                 Arrival             = $_.destination.time
-                Change              = if (($_.origin.name) -notlike "*$($Depature.name)*" -and ($_.destination.name) -notlike "*$($FinalDestination.name)*") {'Byte till'} elseif (($_.destination.name) -like "*$($FinalDestination.name)*" -and ($_.origin.name) -like "*$($Depature.name)*" ) {''} elseif (($_.destination.name) -like "*$($FinalDestination.name)*" -and ($_.origin.name) -notlike "*$($DepatureFrom.name)*" ) {'Sista bytet'} elseif (($_.destination.name) -notlike "*$($FinalDestination.name)*" -and ($_.origin.name) -like "*$($DepatureFrom.name)*" ) {'Innehåller byte'} else {}
+                Change              = if (($_.origin.name) -notlike "*$($Depature.name)*" -and ($_.destination.name) -notlike "*$($FinalDestination.name)*") {'Change to'} elseif (($_.destination.name) -like "*$($FinalDestination.name)*" -and ($_.origin.name) -like "*$($Depature.name)*" ) {''} elseif (($_.destination.name) -like "*$($FinalDestination.name)*" -and ($_.origin.name) -notlike "*$($DepatureFrom.name)*" ) {'Sista bytet'} elseif (($_.destination.name) -notlike "*$($FinalDestination.name)*" -and ($_.origin.name) -like "*$($DepatureFrom.name)*" ) {'Contains a change'} else {}
                 Date                = if ($_.origin.date -eq $TomorrowString){"$($_.origin.date) ($($Tomorrow.DayOfWeek))"} else {$_.origin.date}   
                 From                = $_.origin.Name
                 Track               = $_.origin.Track
